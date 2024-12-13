@@ -6,7 +6,6 @@ project(
     LANGUAGES CXX
 )
 
-# Set C++ standard
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -19,11 +18,11 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Add executable
 add_executable(
     main 
     src/main.cpp
     src/Body.cpp
+    src/nbody_simulation.cpp
 )
 
 enable_testing()
@@ -39,5 +38,19 @@ target_link_libraries(
     GTest::gtest_main
 )
 
+add_executable(
+    nbody_simulation_test
+    tests/nbody_simulation_test.cc
+    src/nbody_simulation.cpp
+    src/Body.cpp
+)
+
+target_link_libraries(
+    nbody_simulation_test
+    GTest::gtest
+    GTest::gtest_main
+)
+
 include(GoogleTest)
 gtest_discover_tests(body_test)
+gtest_discover_tests(nbody_simulation_test)
