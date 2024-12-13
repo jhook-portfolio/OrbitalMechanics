@@ -1,0 +1,44 @@
+name: Deploy API
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'api/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'api/**'
+jobs:
+    deploy:
+        runs-on: self-hosted
+
+        steps:
+            - name: Pull code
+              run: |
+                echo "Pulling repo"
+                cd ~/${{secrets.REPO_NAME}}
+                git pull origin main
+                
+            - name: Install dependencies
+              run: |    
+                cd ~/${{secrets.REPO_NAME}}/api
+
+                if [ ! -d "api-venv" ]; then
+                  echo "Virtual environment not found. Creating a new one..."
+                  python3 -m venv api-venv 
+                else
+                  echo "Virtual environment already exists."
+                fi
+
+                echo "Activating venv"
+                source api-venv/bin/activate
+
+                echo "Installing requirements"
+                pip install -r requirements.txt
+
+            - name: Restarting API service
+              run: |
+                sudo systemctl restart ${{secrets.API_SERVICE_NAME}}

@@ -1,0 +1,79 @@
+# CMake build files
+# Ignore CMake-related files and directories
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Makefile
+*.cmake
+*.o
+*.a
+*.so
+*.exe
+*.out
+build/
+_deps/
+out/
+bin/
+debug/
+release/
+
+# GoogleTest build files
+googletest/
+googletest-build/
+googletest-src/
+googletest-subbuild/
+
+
+# Python FastAPI specific
+# Ignore Python bytecode and virtual environments
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+venv/
+.env/
+env/
+.venv/
+dist/
+build/
+*.egg-info/
+*.log
+*.sqlite
+*.db
+
+# React / Node.js specific
+# Ignore node_modules and other generated files
+node_modules/
+npm-debug.log
+yarn-error.log
+*.lock
+build/
+dist/
+*.log
+
+# IDE / Editor specific files
+# VSCode
+.vscode/
+
+# JetBrains IDEs (e.g., PyCharm, IntelliJ IDEA, WebStorm)
+.idea/
+
+# VS (Visual Studio)
+.vs/
+.vs2019/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Other temporary files
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+
+# For Ubuntu and other Linux systems
+*~ 
