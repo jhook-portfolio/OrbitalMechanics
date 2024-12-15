@@ -38,11 +38,11 @@ namespace crow
     struct SocketAdaptor
     {
         using context = void;
-        SocketAdaptor(asio::io_service& io_service, context*):
+        SocketAdaptor(asio::io_context& io_service, context*):
           socket_(io_service)
         {}
 
-        asio::io_service& get_io_service()
+        asio::io_context& get_io_service()
         {
             return GET_IO_SERVICE(socket_);
         }

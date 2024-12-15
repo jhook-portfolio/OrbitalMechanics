@@ -30,29 +30,31 @@ add_executable(
     src/main.cpp
     src/Body.cpp
     src/nbody_simulation.cpp
+    src/two_body_model.cpp
 )
 
 # Build Test Suites
 enable_testing()
+
+# Test Body struct
 add_executable(
     body_test
     tests/body_test.cc
     src/Body.cpp
 )
-
 target_link_libraries(
     body_test
     GTest::gtest
     GTest::gtest_main
 )
 
+# Test nbody simulation
 add_executable(
     nbody_simulation_test
     tests/nbody_simulation_test.cc
     src/nbody_simulation.cpp
     src/Body.cpp
 )
-
 target_link_libraries(
     nbody_simulation_test
     GTest::gtest
