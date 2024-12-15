@@ -2,7 +2,7 @@
 // detail/resolver_service_base.hpp
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-// Copyright (c) 2003-2024 Christopher M. Kohlhoff (chris at kohlhoff dot com)
+// Copyright (c) 2003-2020 Christopher M. Kohlhoff (chris at kohlhoff dot com)
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -72,21 +72,6 @@ public:
       resolver_service_base& other_service,
       implementation_type& other_impl);
 
-  // Move-construct a new timer implementation.
-  void converting_move_construct(implementation_type& impl,
-      resolver_service_base&, implementation_type& other_impl)
-  {
-    move_construct(impl, other_impl);
-  }
-
-  // Move-assign from another timer implementation.
-  void converting_move_assign(implementation_type& impl,
-      resolver_service_base& other_service,
-      implementation_type& other_impl)
-  {
-    move_assign(impl, other_service, other_impl);
-  }
-
   // Cancel pending asynchronous operations.
   ASIO_DECL void cancel(implementation_type& impl);
 
@@ -144,9 +129,6 @@ private:
 
   // Thread used for running the work io_context's run loop.
   asio::detail::scoped_ptr<asio::detail::thread> work_thread_;
-
-  // Whether the scheduler locking is enabled.
-  bool scheduler_locking_;
 };
 
 } // namespace detail
