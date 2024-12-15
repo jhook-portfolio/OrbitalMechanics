@@ -1,5 +1,6 @@
 # Orbital Mechanics:
-This is an Orbital Mechanics Simulator, a project dedicated to emulating the complex dynamics of the N-body problem. The project start with a simple two body problem providing insights into orbital mechanics, astrophysics and celestial systems.
+![Application Architecture](images/orbital-mechanics-architecture.png)
+This is an Orbital Mechanics Simulator, a project dedicated to emulating the complex dynamics of the N-body problem. The project starts with a simple two body problem providing; insights into orbital mechanics, astrophysics and celestial systems.
 
 ## Physx:
 A simple physics engine written in C++ 14, tested using GTest, and built using CMake. The engine models the two body problem using Newtonian Physics.
